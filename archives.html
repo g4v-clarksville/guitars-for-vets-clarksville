@@ -17,7 +17,7 @@
     <nav class="sticky top-0 z-50 backdrop-blur-xl bg-[#030712]/80 border-b border-slate-800/60">
         <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <a href="index.html" class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center gap-4 cursor-pointer transition-opacity hover:opacity-85" title="Go to Home">
                     <img src="images/Picture2.png" alt="Chapter Patch" class="w-16 h-16 rounded-2xl object-cover shadow-xl shadow-amber-500/20 border-2 border-amber-500/40">
                     <div>
                         <span class="block font-['Space_Grotesk'] font-bold tracking-tight text-white text-lg">G4V CLARKSVILLE</span>
@@ -31,6 +31,7 @@
                 <a href="songs.html" class="hover:text-amber-400 transition-colors">Songbook Index</a>
                 <a href="archives.html" class="text-amber-400 font-bold transition-colors">Archives</a>
                 <a href="sessions.html" class="hover:text-amber-400 transition-colors">Sessions</a>
+                <a href="jams.html" class="hover:text-amber-400 transition-colors">Jams</a>
             </div>
             <a href="https://guitars4vets.org" target="_blank" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-semibold text-sm transition-all shadow-lg shadow-amber-500/20">
                 National Portal
@@ -38,40 +39,218 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 py-20 space-y-12">
-        <div class="max-w-2xl">
-            <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Visual Logs &amp; History</span>
-            <h1 class="text-4xl lg:text-5xl font-extrabold font-['Space_Grotesk'] tracking-tight mt-2">Milestone Archives</h1>
-            <p class="text-slate-400 mt-2">Visual logs from Operation Stand Down, graduation ceremonies, and chapter milestones.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="h-64 rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden relative group">
-                <img src="images/photo9.jpg" alt="Archive Photo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent flex items-end p-6">
-                    <div>
-                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">August 2026</span>
-                        <h4 class="text-lg font-bold text-white mt-1">Chapter Graduation Ceremony</h4>
-                    </div>
-                </div>
+    <main class="max-w-7xl mx-auto px-6 py-16 space-y-16">
+        
+        <!-- Milestone Archives Header & Card Grid Section -->
+        <div class="space-y-8">
+            <div class="max-w-2xl">
+                <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Visual Logs &amp; History</span>
+                <h1 class="text-4xl lg:text-5xl font-extrabold font-['Space_Grotesk'] tracking-tight mt-2">Milestone Archives</h1>
+                <p class="text-slate-400 mt-2">Explore graduation ceremonies, corporate showcases, special community events, and potluck gatherings.</p>
             </div>
-            <div class="h-64 rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden relative group">
-                <img src="images/G4V_Class_22May.jpeg" alt="Archive Photo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent flex items-end p-6">
-                    <div>
-                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">May 2026</span>
-                        <h4 class="text-lg font-bold text-white mt-1">Cohort Celebration &amp; Showcase</h4>
+
+            <!-- Card Grid Layout (4 Cards) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Graduation Ceremonies -->
+                <div onclick="openGalleryModal('grad-gallery')" class="h-72 rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden relative group cursor-pointer shadow-xl">
+                    <img src="images/photo9.jpg" alt="Graduation Ceremonies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Multiple Cohorts</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Graduation Ceremonies</h4>
+                        <p class="text-xs text-slate-300 mt-1">Aug, May &amp; Feb milestones &rarr;</p>
                     </div>
                 </div>
+
+                <!-- Card 2: Special Events & OSD -->
+                <div onclick="openGalleryModal('special-gallery')" class="h-72 rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden relative group cursor-pointer shadow-xl">
+                    <img src="images/tn_coordinators.jpg" alt="Special Events" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">2026 Showcases</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Special Events &amp; OSD</h4>
+                        <p class="text-xs text-slate-300 mt-1">Operation Stand Down logs &rarr;</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Best Corp Event Showcase -->
+                <div onclick="openGalleryModal('corp-gallery')" class="h-72 rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden relative group cursor-pointer shadow-xl">
+                    <img src="images/best-corp-event.10.jpg" alt="Corporate Event Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Corporate Highlights</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Best Corp Event Showcase</h4>
+                        <p class="text-xs text-slate-300 mt-1">Featured corporate gallery &rarr;</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Jam-Fam Potluck -->
+                <div onclick="openGalleryModal('potluck-gallery')" class="h-72 rounded-3xl bg-slate-900 border border-slate-800 overflow-hidden relative group cursor-pointer shadow-xl">
+                    <img src="images/jam-fam-1.jpg" alt="Jam-Fam Potluck" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">August 29, 2026</span>
+                        <h4 class="text-lg font-bold text-white mt-1">1st Annual Jam-Fam Potluck</h4>
+                        <p class="text-xs text-slate-300 mt-1">Community gathering logs &rarr;</p>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Grand Ole Opry</div>
+                        <h3 class="text-2xl font-bold font-['Space_Grotesk'] text-white mt-2">Challenge America 250</h3>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">Commemorative chapter showcase celebrating veteran healing on stage at the historic Grand Ole Opry.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1M6pgO7GF_lhwii9pLUe5bn17pAANgVhI/view" target="_blank" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300">
+                        <span>Watch Highlight Reel</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
             </div>
         </div>
     </main>
 
+    <!-- Gallery Modal Container (Hidden by default) -->
+    <div id="galleryModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-lg hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="relative w-full max-w-5xl bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 my-8 shadow-2xl">
+            <button onclick="closeGalleryModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-800 hover:bg-amber-500 hover:text-black text-slate-300 font-bold flex items-center justify-center transition-colors">
+                ✕
+            </button>
+            <div id="modalContent" class="space-y-6 pt-2">
+                <!-- Dynamically injected gallery content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="border-t border-slate-800/80 bg-slate-950 py-12 text-center text-sm text-slate-500">
-        <div class="max-w-7xl mx-auto px-6 space-y-2">
-            <p class="font-['Space_Grotesk'] font-bold text-white">GUITARS FOR VETS • CLARKESVILLE CHAPTER #287</p>
-            <p>Established February 18, 2026[cite: 3].</p>
+        <div class="max-w-7xl mx-auto px-6 space-y-4">
+            <p class="font-['Space_Grotesk'] font-bold text-white tracking-wider">GUITARS FOR VETS • CLARKSVILLE CHAPTER #287</p>
+            <p>Established February 18, 2026. Empowering combat veterans through the healing power of music.</p>
         </div>
     </footer>
+
+    <!-- Inline scripts for modal handling and tab switching -->
+    <script>
+        function openGalleryModal(galleryKey) {
+            const modal = document.getElementById('galleryModal');
+            const content = document.getElementById('modalContent');
+            
+            let html = '';
+            
+            if (galleryKey === 'grad-gallery') {
+                html = `
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Milestone Logs</span>
+                        <h3 class="text-2xl font-bold font-['Space_Grotesk'] text-white mt-1">Graduation Ceremonies</h3>
+                    </div>
+                    <div class="flex gap-2 flex-wrap border-b border-slate-800 pb-4">
+                        <button onclick="switchModalTab(event, 'modal-grad-aug')" class="px-4 py-2 rounded-xl bg-amber-500 text-black font-bold text-xs uppercase tracking-wider modal-tab-btn">August 2026</button>
+                        <button onclick="switchModalTab(event, 'modal-grad-may')" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider modal-tab-btn">May 2026</button>
+                        <button onclick="switchModalTab(event, 'modal-grad-feb')" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider modal-tab-btn">February 2026</button>
+                    </div>
+                    <div id="modal-grad-aug" class="modal-tab-pane grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="images/photo1.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo2.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo3.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo4.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo5.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo6.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo7.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                        <img src="images/photo8.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Graduation">
+                    </div>
+                    <div id="modal-grad-may" class="modal-tab-pane grid grid-cols-2 md:grid-cols-4 gap-4" style="display:none;">
+                        <img src="images/G4V_Class_22May.jpeg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo1.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo2.jpeg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo3.jpeg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo4.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo5.jpeg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo7.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                        <img src="images/graduation_photo8.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="May Grad">
+                    </div>
+                    <div id="modal-grad-feb" class="modal-tab-pane grid grid-cols-2 md:grid-cols-4 gap-4" style="display:none;">
+                        <img src="images/feb_2026_grad_pic_1.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800" alt="Feb Grad">
+                    </div>
+                `;
+            } else if (galleryKey === 'special-gallery') {
+                html = `
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Chapter Highlights</span>
+                        <h3 class="text-2xl font-bold font-['Space_Grotesk'] text-white mt-1">Special Events &amp; Operation Stand Down</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="images/tn_coordinators.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/wall_of_guitars_1.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/wall_of_guitars_2.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                    </div>
+                `;
+            } else if (galleryKey === 'corp-gallery') {
+                html = `
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Featured Showcase</span>
+                        <h3 class="text-2xl font-bold font-['Space_Grotesk'] text-white mt-1">Best Corp Event Showcase</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="images/best-corp-event.10.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.11.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.12.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.13.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.14.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.15.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.16.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.17.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.18.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/best-corp-event.19.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                    </div>
+                `;
+            } else if (galleryKey === 'potluck-gallery') {
+                html = `
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Community Gathering</span>
+                        <h3 class="text-2xl font-bold font-['Space_Grotesk'] text-white mt-1">1st Annual Jam-Fam Summer Potluck • August 29, 2026</h3>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <img src="images/jam-fam-1.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/jam-fam-2.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/jam-fam-3.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/jam-fam-4.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/jam-fam-5.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/jam-fam-6.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                        <img src="images/jam-fam-7.jpg" class="rounded-xl object-cover h-40 w-full border border-slate-800">
+                    </div>
+                `;
+            }
+            
+            content.innerHTML = html;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchModalTab(event, paneId) {
+            const container = event.target.closest('#modalContent');
+            container.querySelectorAll('.modal-tab-pane').forEach(el => el.style.display = 'none');
+            container.querySelectorAll('.modal-tab-btn').forEach(btn => {
+                btn.className = 'px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold text-xs uppercase tracking-wider modal-tab-btn';
+            });
+            document.getElementById(paneId).style.display = 'grid';
+            event.target.className = 'px-4 py-2 rounded-xl bg-amber-500 text-black font-bold text-xs uppercase tracking-wider modal-tab-btn';
+        }
+
+        // Close modal on background click
+        window.onclick = function(event) {
+            const modal = document.getElementById('galleryModal');
+            if (event.target === modal) {
+                closeGalleryModal();
+            }
+        }
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
