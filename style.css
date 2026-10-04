@@ -503,3 +503,37 @@ button.btn-year.active {
     display: inline-block;
     transition: transform 0.2s ease;
 }
+
+@media print {
+    /* Hide everything on the page by default */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Only show the song modal container and its contents */
+    #songModal, #songModal * {
+        visibility: visible;
+    }
+
+    /* Reset modal positioning to print cleanly from the top of the page */
+    #songModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        height: auto !important;
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Hide print, copy, download, and close buttons on the printed paper */
+    #songModal button, 
+    #songModal .print-hide {
+        display: none !important;
+    }
+}
