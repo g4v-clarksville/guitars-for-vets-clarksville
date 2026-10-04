@@ -231,80 +231,57 @@
                     <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-500">
                         <span>Open to Active Cohort</span>
                     </span>
-                </div>
-                
-        </section>
+                </div> 
+            </section>
 
-        <!-- Sponsor Tiers & Archives Gallery Section Restored -->
-        <section id="gallery" class="grid lg:grid-cols-2 gap-12">
-            <!-- Valued Sponsors -->
-            <div class="space-y-6">
-                <div>
-                    <h2 class="text-2xl font-extrabold font-['Space_Grotesk']">Valued Chapter Sponsors</h2>
-                    <p class="text-slate-400 text-sm mt-1">Partners powering our mission in Clarksville and Oak Grove.</p>
-                </div>
-                <div class="space-y-4">
-
-                    <!-- Gold Tier -->
-                    <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 cursor-pointer hover:border-amber-500/40 transition-all group" onclick="toggleSponsor('sponsor-gold')">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Gold Tier</span>
-                                <h4 class="font-bold text-white mt-1">Veterans of Foreign Wars #4895</h4>
-                                <p class="text-xs text-slate-400">Clarksville, TN 37043</p>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">G</div>
-                                <svg id="icon-sponsor-gold" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
+                    <!-- Sponsor Tiers & Archives Gallery Section Restored -->
+                    <section id="gallery" class="grid lg:grid-cols-2 gap-12">
+                       <!-- Valued Chapter Sponsors Section -->
+                    <div class="space-y-6">
+                        <div>
+                            <h2 class="text-3xl font-extrabold font-['Space_Grotesk'] text-white tracking-tight">Valued Chapter Sponsors</h2>
+                            <p class="text-slate-400 mt-1">Partners powering our mission in Clarksville and Oak Grove.</p>
                         </div>
-                        <!-- Dropdown Details -->
-                        <div id="sponsor-gold" class="hidden mt-4 pt-4 border-t border-slate-800/80 text-xs text-slate-300 space-y-1.5">
-                            <p><strong class="text-white">Partnership Role:</strong> Primary chapter meeting location and veteran community anchor.</p>
-                            <p><strong class="text-white">Location Details:</strong> Clarksville, TN</p>
-                            <div class="text-amber-400 font-semibold pt-1">Status: Active Gold Partner</div>
-                        </div>
-                    </div>
                     
-                    <!-- Silver Tier -->
-                    <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 cursor-pointer hover:border-slate-700 transition-all group" onclick="toggleSponsor('sponsor-silver')">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">Silver Tier</span>
-                                <h4 class="font-bold text-white mt-1">American Legion Post 233</h4>
-                                <p class="text-xs text-slate-400">Oak Grove, KY 42262</p>
+                        <!-- Horizontal Scrollable Row for Sponsor Tiers -->
+                        <div class="flex gap-6 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
+                            
+                            <!-- Gold Tier -->
+                            <div class="flex-shrink-0 w-80 p-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold tracking-widest text-amber-400 uppercase">Gold Tier</span>
+                                        <span class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold text-xs flex items-center justify-center">G</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold font-['Space_Grotesk'] text-white mt-3">Veterans of Foreign Wars #4895</h3>
+                                    <p class="text-slate-400 text-xs mt-1">Clarksville, TN 37043</p>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-slate-800 text-slate-200 flex items-center justify-center font-bold border border-slate-700">S</div>
-                                <svg id="icon-sponsor-silver" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    
+                            <!-- Silver Tier -->
+                            <div class="flex-shrink-0 w-80 p-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold tracking-widest text-slate-300 uppercase">Silver Tier</span>
+                                        <span class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center">S</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold font-['Space_Grotesk'] text-white mt-3">American Legion Post 233</h3>
+                                    <p class="text-slate-400 text-xs mt-1">Oak Grove, KY 42262</p>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Dropdown Details -->
-                        <div id="sponsor-silver" class="hidden mt-4 pt-4 border-t border-slate-800/80 text-xs text-slate-300 space-y-1.5">
-                            <p><strong class="text-white">Partnership Role:</strong> Regional outreach and community support sponsor.</p>
-                            <p><strong class="text-white">Location Details:</strong> Oak Grove, KY</p>
-                            <div class="text-slate-300 font-semibold pt-1">Status: Active Silver Partner</div>
-                        </div>
-                    </div>
-
-                    <!-- Bronze Tier: Love Blood Ink Tattoo -->
-                    <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 cursor-pointer hover:border-amber-700/40 transition-all group" onclick="toggleSponsor('sponsor-bronze')">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Bronze Tier</span>
-                                <h4 class="font-bold text-white mt-1">Love Blood Ink Tattoo</h4>
-                                <p class="text-xs text-slate-400">265 Stonecrossing Dr, Clarksville, TN</p>
+            
+                            <!-- Bronze Tier -->
+                            <div class="flex-shrink-0 w-80 p-6 rounded-3xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold tracking-widest text-amber-600 uppercase">Bronze Tier</span>
+                                        <span class="w-8 h-8 rounded-xl bg-amber-600/10 border border-amber-600/30 text-amber-500 font-bold text-xs flex items-center justify-center">B</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold font-['Space_Grotesk'] text-white mt-3">Love Blood Ink Tattoo</h3>
+                                    <p class="text-slate-400 text-xs mt-1">265 Stonecrossing Dr, Clarksville, TN</p>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-amber-900/20 text-amber-600 flex items-center justify-center font-bold border border-amber-800/30">B</div>
-                                <svg id="icon-sponsor-bronze" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                            </div>
-                        </div>
-                        <!-- Dropdown Details -->
-                        <div id="sponsor-bronze" class="hidden mt-4 pt-4 border-t border-slate-800/80 text-xs text-slate-300 space-y-1.5">
-                            <p><strong class="text-white">Partnership Role:</strong> Event host &amp; community supporter (Live Music &amp; Free Tattoos for Vets).</p>
-                            <p><strong class="text-white">Location Details:</strong> 265 Stonecrossing Dr, Clarksville, TN</p>
-                            <div class="text-amber-600 font-semibold pt-1">Status: Active Featured Event Partner</div>
+                    
                         </div>
                     </div>
 
@@ -315,18 +292,20 @@
                             <h3 class="text-2xl font-bold font-['Space_Grotesk'] text-white mt-2">Official Chapter Business Cards</h3>
                             <p class="text-slate-400 text-sm mt-3 leading-relaxed">Download or view official G4V Chapter #287 contact cards for community outreach, veteran recruitment, and sponsor networking.</p>
                         </div>
-                        <div class="mt-8 flex flex-wrap gap-4">
-                            <a href="images/sponsor1.jpg" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold text-xs uppercase tracking-wider transition-all border border-slate-700 inline-flex items-center gap-2">
-                                <span>Card Front</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        
+                        <!-- Horizontal Scrollable Row for Cards -->
+                        <div class="mt-6 flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
+                            <a href="images/sponsor1.jpg" target="_blank" class="flex-shrink-0 group relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950/60 w-48 hover:border-amber-500/50 transition-all">
+                                <img src="images/sponsor1.jpg" alt="Card Front" class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="p-3 bg-slate-900/90 text-xs font-bold text-center text-slate-200 group-hover:text-amber-400 transition-colors">Card Front</div>
                             </a>
-                            <a href="images/sponsor2.jpg" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold text-xs uppercase tracking-wider transition-all border border-slate-700 inline-flex items-center gap-2">
-                                <span>Card Back 1</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            <a href="images/sponsor2.jpg" target="_blank" class="flex-shrink-0 group relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950/60 w-48 hover:border-amber-500/50 transition-all">
+                                <img src="images/sponsor2.jpg" alt="Card Back 1" class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="p-3 bg-slate-900/90 text-xs font-bold text-center text-slate-200 group-hover:text-amber-400 transition-colors">Card Back 1</div>
                             </a>
-                            <a href="images/sponsor3.jpg" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold text-xs uppercase tracking-wider transition-all border border-slate-700 inline-flex items-center gap-2">
-                                <span>Card Back 2</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            <a href="images/sponsor3.jpg" target="_blank" class="flex-shrink-0 group relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950/60 w-48 hover:border-amber-500/50 transition-all">
+                                <img src="images/sponsor3.jpg" alt="Card Back 2" class="w-full h-28 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="p-3 bg-slate-900/90 text-xs font-bold text-center text-slate-200 group-hover:text-amber-400 transition-colors">Card Back 2</div>
                             </a>
                         </div>
                     </div>
