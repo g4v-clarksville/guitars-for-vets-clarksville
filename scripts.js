@@ -1,9 +1,9 @@
 /* ==========================================================
-   1. SONG SEARCH & CATALOG ENGINE (From earlier)
-   ================================================---------- */
+   1. SONG SEARCH & CATALOG ENGINE
+   ========================================================== */
 let songDatabase = [];
 
-// Fetch your full catalog from songs.json on load
+// Fetch your full catalog from songs.json on load if the search input exists
 fetch('songs.json')
     .then(response => response.json())
     .then(data => {
@@ -19,7 +19,6 @@ if (searchInput && songGrid) {
         const query = e.target.value.toLowerCase().trim();
         
         if (query === "") {
-            // Default view or fallback cards when search is empty...
             return;
         }
 
@@ -27,19 +26,19 @@ if (searchInput && songGrid) {
             s.title.toLowerCase().includes(query) || s.artist.toLowerCase().includes(query)
         );
 
-        // Render filtered results...
+        // Render filtered results logic here...
     });
 }
 
 
 /* ==========================================================
-   2. SESSIONS & DASHBOARD ENGINE (Paste your new engine here)
-   ================================================---------- */
+   2. SESSIONS & DASHBOARD ENGINE
+   ========================================================== */
 const mainContainer = document.getElementById('dashboard-root');
 let allCycleData = [];
 
 /* -----------------------------
-    WAITLIST & UI TOGGLES
+   WAITLIST & UI TOGGLES
 ----------------------------- */
 function toggleWaitlist() {
     const content = document.getElementById('waitlist-content');
@@ -88,7 +87,7 @@ function switchGradTab(evt, tabId) {
 }
 
 /* -----------------------------
-    CYCLE PROGRESS
+   CYCLE PROGRESS
 ----------------------------- */
 function calculateProgress(cycle) {
     const vets = Array.isArray(cycle.vets) ? cycle.vets : [];
@@ -97,7 +96,7 @@ function calculateProgress(cycle) {
         
     const participatingVets = vets.filter(v => {
         const status = (v.status || "").toLowerCase().trim();
-        return status !== "dropped" && status != "deferred";
+        return status !== "dropped" && status !== "deferred";
     });
         
     if (participatingVets.length === 0) return 0;
@@ -143,7 +142,7 @@ function getCycleStatus(cycle) {
 }
 
 /* -----------------------------
-    DASHBOARD BUILD
+   DASHBOARD BUILD
 ----------------------------- */
 function buildDashboard(cycleData) {
     const reached = new Set();
@@ -208,12 +207,12 @@ function buildDashboard(cycleData) {
     });
    
     // RENDER ONLY SELECTED YEAR (cycleData)
-cycleData.forEach(cycle => {
-    const progressValue = calculateProgress(cycle);
-    const cycleStatus = getCycleStatus(cycle);
-    let rows = '';
+    cycleData.forEach(cycle => {
+        const progressValue = calculateProgress(cycle);
+        const cycleStatus = getCycleStatus(cycle);
+        let rows = '';
 
-    (cycle.vets || []).forEach(vet => {
+        (cycle.vets || []).forEach(vet => {
             const sessionCount = parseInt(vet.session) || 0;
             const statusText = (vet.status || "").toLowerCase().trim();
             const availabilityText = vet.availability || "";
@@ -248,67 +247,68 @@ cycleData.forEach(cycle => {
             `;
         });
 
-    const section = document.createElement('section');
-    
-    const cycleKey = `card_collapsed_${cycle.cycleId}`;
-    const savedState = localStorage.getItem(cycleKey);
-    
-    let shouldCollapse = false;
-    if (savedState !== null) {
-        shouldCollapse = (savedState === 'true');
-    } else if (progressValue === 100) {
-        shouldCollapse = true;
-    }
-    
-    section.className = `cycle-card rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-xl overflow-hidden mb-6 ${shouldCollapse ? 'collapsed' : ''}`;
+        const section = document.createElement('section');
+        
+        const cycleKey = `card_collapsed_${cycle.cycleId}`;
+        const savedState = localStorage.getItem(cycleKey);
+        
+        let shouldCollapse = false;
+        if (savedState !== null) {
+            shouldCollapse = (savedState === 'true');
+        } else if (progressValue === 100) {
+            shouldCollapse = true;
+        }
+        
+        section.className = `cycle-card rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-xl overflow-hidden mb-6 ${shouldCollapse ? 'collapsed' : ''}`;
 
-    section.innerHTML = `
-        <div class="card-header p-6 cursor-pointer bg-slate-900/80 hover:bg-slate-800/50 transition-colors border-b border-slate-800/80" onclick="toggleAndSaveCard(this, '${cycle.cycleId}')">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <h2 class="m-0 text-amber-400 font-['Space_Grotesk'] font-bold text-lg flex items-center gap-2">
-                    <span class="card-toggle-arrow font-mono text-xs text-slate-400">▼</span>
-                    Cycle ${cycle.cycleId} 
-                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-normal">${cycleStatus}</span>
-                </h2> 
+        section.innerHTML = `
+            <div class="card-header p-6 cursor-pointer bg-slate-900/80 hover:bg-slate-800/50 transition-colors border-b border-slate-800/80" onclick="toggleAndSaveCard(this, '${cycle.cycleId}')">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <h2 class="m-0 text-amber-400 font-['Space_Grotesk'] font-bold text-lg flex items-center gap-2">
+                        <span class="card-toggle-arrow font-mono text-xs text-slate-400">▼</span>
+                        Cycle ${cycle.cycleId} 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-normal">${cycleStatus}</span>
+                    </h2> 
 
-                <div class="cycle-timeline text-xs text-slate-400 font-mono">
-                    <span class="timeline-label text-slate-500 mr-1">TIMELINE:</span>
-                    <span class="timeline-dates text-slate-300">
-                        ${cycle.startDate || "TBD"} — ${cycle.endDate || "TBD"}
-                    </span>
+                    <div class="cycle-timeline text-xs text-slate-400 font-mono">
+                        <span class="timeline-label text-slate-500 mr-1">TIMELINE:</span>
+                        <span class="timeline-dates text-slate-300">
+                            ${cycle.startDate || "TBD"} — ${cycle.endDate || "TBD"}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mt-4 flex items-center gap-4">
+                    <div class="progress-container flex-1 bg-slate-950 rounded-full overflow-hidden h-2 border border-slate-800">
+                        <div class="progress-bar bg-amber-400 h-full transition-all duration-500" style="width:${progressValue}%"></div>
+                    </div>
+                    <span class="progress-text text-xs font-mono text-slate-400 whitespace-nowrap">${progressValue}% Cycle Progress</span>
                 </div>
             </div>
 
-            <div class="mt-4 flex items-center gap-4">
-                <div class="progress-container flex-1 bg-slate-950 rounded-full overflow-hidden h-2 border border-slate-800">
-                    <div class="progress-bar bg-amber-400 h-full transition-all duration-500" style="width:${progressValue}%"></div>
-                </div>
-                <span class="progress-text text-xs font-mono text-slate-400 whitespace-nowrap">${progressValue}% Cycle Progress</span>
+            <div class="instructor-box px-6 py-3 bg-slate-950/40 border-b border-slate-800/60 text-xs text-slate-300 font-mono">
+                <span class="text-slate-500 mr-1">ASSIGNED INSTRUCTORS:</span> ${(cycle.instructors || []).join(' & ')}
             </div>
-        </div>
 
-        <div class="instructor-box px-6 py-3 bg-slate-950/40 border-b border-slate-800/60 text-xs text-slate-300 font-mono">
-            <span class="text-slate-500 mr-1">ASSIGNED INSTRUCTORS:</span> ${(cycle.instructors || []).join(' & ')}
-        </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-xs text-slate-400 font-mono uppercase bg-slate-950/20">
+                            <th class="py-3 px-4">Seq#</th>
+                            <th class="py-3 px-4">Veteran</th>
+                            <th class="py-3 px-4">Session</th>
+                            <th class="py-3 px-4">Status</th>
+                            <th class="py-3 px-4">Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
+        `;
 
-        <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-sm">
-                <thead>
-                    <tr class="border-b border-slate-800 text-xs text-slate-400 font-mono uppercase bg-slate-950/20">
-                        <th class="py-3 px-4">Seq#</th>
-                        <th class="py-3 px-4">Veteran</th>
-                        <th class="py-3 px-4">Session</th>
-                        <th class="py-3 px-4">Status</th>
-                        <th class="py-3 px-4">Availability</th>
-                    </tr>
-                </thead>
-                <tbody>${rows}</tbody>
-            </table>
-        </div>
-    `;
+        mainContainer.appendChild(section);
+    });
 
-    mainContainer.appendChild(section);
-});
     // GLOBAL KPI OUTPUT
     const totalVetsEl = document.getElementById('total-vets');
     const gradCountEl = document.getElementById('grad-count');
@@ -324,7 +324,7 @@ cycleData.forEach(cycle => {
 }
 
 /* -----------------------------
-    CARD TOGGLE STATE STORAGE
+   CARD TOGGLE STATE STORAGE
 ----------------------------- */
 function toggleAndSaveCard(headerElement, cycleId) {
     const cardSection = headerElement.parentElement;
@@ -333,7 +333,7 @@ function toggleAndSaveCard(headerElement, cycleId) {
 }
                     
 /* -----------------------------
-    DATA LOADING
+   DATA LOADING
 ----------------------------- */
 function loadDataFromGoogle() {
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRZrgM6dmSRKecR8YR63T4Hvhq9vShmdLKvyqkx-HbO7DbXVNpBdhBl5SfOJFzvtFWBBwYnVYpNo_5z/pub?output=csv";
@@ -346,7 +346,7 @@ function loadDataFromGoogle() {
 }
 
 /* -----------------------------
-    PROCESS DATA
+   PROCESS DATA
 ----------------------------- */
 function processExcelData(rawRows) {
     const groupedData = {};
@@ -403,7 +403,7 @@ function processExcelData(rawRows) {
 }
 
 /* -----------------------------
-    WAITLIST RENDER
+   WAITLIST RENDER
 ----------------------------- */
 function renderWaitlist(waitlist) {
     const waitSection = document.getElementById('waitlist-section');
@@ -437,7 +437,7 @@ function renderWaitlist(waitlist) {
 }
 
 /* -----------------------------
-    YEAR FILTER & ACTIVE STATE
+   YEAR FILTER & ACTIVE STATE
 ----------------------------- */
 function filterByYear(year) {
     const filtered = allCycleData.filter(cycle => {
@@ -454,8 +454,7 @@ function initializeYearSelector() {
     buttons.forEach(button => {
         const yearText = button.textContent.trim();
         
-        // Default 2026 to active on initial load if none selected
-        if (yearText === "2026" && !document.querySelector('.btn-year.active')) {
+        if (yearText === "2026") {
             button.classList.add("active");
         }
 
@@ -469,27 +468,9 @@ function initializeYearSelector() {
 }
 
 /* -----------------------------
-    INIT
+   INIT
 ----------------------------- */
 initializeYearSelector();
-loadDataFromGoogle();
-
-function initializeYearSelector() {
-    document.querySelectorAll('.btn-year').forEach(button => {
-
-        if (button.textContent.trim() === "2026") {
-            button.classList.add("active");
-        }
-
-        button.addEventListener("click", () => {
-
-            document.querySelectorAll(".btn-year")
-                .forEach(b => b.classList.remove("active"));
-
-            button.classList.add("active");
-
-            filterByYear(button.textContent.trim());
-        });
-
-    });
+if (mainContainer) {
+    loadDataFromGoogle();
 }
